@@ -21,7 +21,7 @@ export default function Footer() {
               className="h-12 w-12 object-contain"
             />
             <div className="flex flex-col leading-tight">
-              <span className="font-serif text-xl font-semibold">Swaranbharat</span>
+              <span className="font-serif text-xl font-semibold">SwaranBharat</span>
               <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-brand-gold-soft">
                 ExportSarathi
               </span>

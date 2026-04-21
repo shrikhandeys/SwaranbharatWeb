@@ -1,22 +1,22 @@
 export const siteConfig = {
-  name: 'Swaranbharat ExportSarathi',
-  shortName: 'Swaranbharat',
+  name: 'SwaranBharat ExportSarathi LLP',
+  shortName: 'SwaranBharat',
   tagline: 'Your Trusted Global Trade Partner',
   description:
-    'India-based merchant exporter of moringa powder, dehydrated onion, turmeric, ginger, chilli and paper products. Bulk supply, lab-tested quality, private-label support and global logistics for verified B2B buyers.',
+    'SwaranBharat ExportSarathi LLP — India-based merchant exporter of moringa powder, dehydrated onion, turmeric, ginger, chilli and paper products. Bulk supply, lab-tested quality, private-label support and global logistics for verified B2B buyers.',
   domain: 'swaranbharatexports.com',
   url: 'https://swaranbharatexports.com',
-  email: 'exports@swaranbharatexports.com',
-  phone: '+91 90000 00000',
-  whatsapp: '+919000000000',
+  email: 'info@swaranbharatexports.com',
+  phone: '+91 9096172205',
+  whatsapp: '+919096172205',
   whatsappMessage:
-    'Hello Swaranbharat ExportSarathi, I would like to request a bulk export quote.',
+    'Hello SwaranBharat ExportSarathi, I would like to request a bulk export quote.',
   address: {
-    line1: 'Swaranbharat ExportSarathi',
-    line2: 'Merchant Exporter, Maharashtra',
+    line1: 'SwaranBharat ExportSarathi LLP',
+    line2: 'Flat No 605, Nakshatra-2 Building, Mohan Nagar Co. Op. Housing Society, Near Bitwise Terra Tower, Baner',
     city: 'Pune',
     state: 'Maharashtra',
-    pincode: '411001',
+    pincode: '411045',
     country: 'India',
   },
   socials: {

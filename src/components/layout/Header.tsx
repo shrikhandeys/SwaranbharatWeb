@@ -42,7 +42,7 @@ export default function Header() {
             />
             <div className="hidden flex-col leading-tight sm:flex">
               <span className="font-serif text-xl font-semibold text-brand-navy lg:text-2xl">
-                Swaranbharat
+                SwaranBharat
               </span>
               <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-brand-gold lg:text-[11px]">
                 ExportSarathi
