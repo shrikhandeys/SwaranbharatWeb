@@ -39,8 +39,7 @@ export const categories: Category[] = [
     name: 'Powdered Products',
     description:
       'Moringa, turmeric, chilli and blended spice powders processed in lab-tested, food-grade facilities.',
-    image:
-      'https://images.unsplash.com/photo-1615485500834-bc10199bc727?auto=format&fit=crop&w=1200&q=80',
+    image: '/products/turmeric-powder.jpg',
     subcategories: ['Moringa Powder', 'Turmeric Powder', 'Chilli Powder', 'Blended Masalas'],
   },
   {
@@ -48,8 +47,7 @@ export const categories: Category[] = [
     name: 'Paper Products',
     description:
       'Eco-friendly paper bags, kraft packaging and custom printed paper products for global retailers.',
-    image:
-      'https://images.unsplash.com/photo-1586380951230-e6703d9f6833?auto=format&fit=crop&w=1200&q=80',
+    image: '/products/paper-bags-2.jpg',
     subcategories: ['Paper Bags', 'Kraft Rolls', 'Printed Packaging'],
   },
 ];
