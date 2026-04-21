@@ -19,7 +19,7 @@ const schema = z.object({
   productInterest: z.string(),
   message: z.string().min(5),
   seriousBuyer: z.boolean(),
-  website: z.string().max(0).optional(), // honeypot
+  website: z.string().optional(), // honeypot (any value — checked at runtime)
 });
 
 export async function POST(req: Request) {

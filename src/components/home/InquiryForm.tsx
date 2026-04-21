@@ -29,7 +29,7 @@ const schema = z
     productInterest: z.string().min(1, 'Select a product interest'),
     message: z.string().min(10, 'Tell us a bit about your requirement (min 10 chars)'),
     seriousBuyer: z.boolean().refine((v) => v, 'Please confirm'),
-    website: z.string().max(0).optional(), // honeypot
+    website: z.string().optional(), // honeypot (any value — checked at runtime)
   })
   .superRefine((val, ctx) => {
     if (val.contactMethod === 'email' && !val.email) {
