@@ -1,129 +1,108 @@
-'use client';
-
-import { useCallback, useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { heroSlides } from '@/data/hero-slides';
-import { cn } from '@/lib/utils';
+import { CheckCircle2 } from 'lucide-react';
+import { siteConfig } from '@/data/site';
+import { whatsappLink } from '@/lib/utils';
+
+const highlights = [
+  'Quality-Focused Sourcing',
+  'Export-Oriented Processing',
+  'Flexible MOQ for Buyers',
+  'Reliable Global Supply Network',
+];
 
 export default function HeroSlider() {
-  const [index, setIndex] = useState(0);
-  const [paused, setPaused] = useState(false);
-  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
-
-  const go = useCallback(
-    (next: number) => setIndex(((next % heroSlides.length) + heroSlides.length) % heroSlides.length),
-    [],
-  );
-
-  useEffect(() => {
-    if (paused) return;
-    timerRef.current = setInterval(() => setIndex((i) => (i + 1) % heroSlides.length), 6000);
-    return () => {
-      if (timerRef.current) clearInterval(timerRef.current);
-    };
-  }, [paused]);
-
-  const current = heroSlides[index];
-
   return (
-    <section
-      className="relative isolate overflow-hidden bg-brand-navy text-white"
-      aria-roledescription="carousel"
-      aria-label="Swaranbharat export highlights"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
-    >
-      <div className="orbit-ring left-[-8%] top-[-20%] h-[520px] w-[520px] opacity-30" aria-hidden />
-      <div className="orbit-ring right-[-12%] bottom-[-30%] h-[620px] w-[620px] opacity-20" aria-hidden />
+    <section className="relative isolate overflow-hidden bg-brand-navy text-white">
+      <Image
+        src="/home/banner-purpose.png"
+        alt="Swaranbharat export banner with globe, ships, aircraft and premium product highlights"
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover object-center"
+      />
+      <div className="absolute inset-0 bg-[rgba(11,31,58,0.78)]" />
 
-      {heroSlides.map((slide, i) => (
-        <div
-          key={slide.title}
-          aria-hidden={i !== index}
-          className={cn(
-            'absolute inset-0 transition-opacity duration-700',
-            i === index ? 'opacity-100' : 'opacity-0',
-          )}
-        >
-          <Image
-            src={slide.image}
-            alt={slide.alt}
-            fill
-            priority={i === 0}
-            sizes="100vw"
-            className="object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-brand-navy/90 via-brand-navy/70 to-brand-navy/30" />
-        </div>
-      ))}
-
-      <div className="container relative z-10 grid min-h-[560px] items-center py-16 md:min-h-[620px] lg:min-h-[680px]">
-        <div className="max-w-2xl animate-fadeIn">
-          <span className="inline-flex items-center rounded-full border border-brand-gold-soft/50 bg-brand-navy/40 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-brand-gold-soft">
-            {current.eyebrow}
+      <div className="container relative z-10 grid min-h-[620px] items-center gap-12 py-16 lg:min-h-[700px] lg:grid-cols-[1.1fr_0.9fr] lg:py-24">
+        <div className="max-w-2xl">
+          <span className="inline-flex items-center rounded-full border border-brand-gold/35 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.28em] text-brand-gold">
+            Global Export Partner From India
           </span>
-          <h1 className="mt-5 font-serif text-4xl font-semibold leading-[1.1] md:text-5xl lg:text-6xl">
-            {current.title}
+
+          <h1 className="mt-6 font-serif text-4xl font-bold leading-[1.06] md:text-5xl lg:text-7xl">
+            {siteConfig.name}
           </h1>
-          <p className="mt-5 max-w-xl text-base leading-relaxed text-brand-ivory/85 md:text-lg">
-            {current.subtitle}
+
+          <p className="mt-4 text-xl font-medium text-white/90 md:text-2xl">{siteConfig.tagline}</p>
+
+          <p className="mt-6 max-w-xl text-base leading-8 text-white/78 md:text-lg">
+            We specialize in sourcing and exporting premium quality dehydrated agricultural
+            products and commodities from India to global markets.
           </p>
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+          <ul className="mt-8 grid gap-3 sm:grid-cols-2">
+            {highlights.map((item) => (
+              <li key={item} className="flex items-center gap-3 rounded-2xl border border-white/12 bg-white/5 px-4 py-3 backdrop-blur-sm">
+                <CheckCircle2 className="h-5 w-5 flex-none text-brand-gold" aria-hidden />
+                <span className="text-sm font-medium text-white/92">{item}</span>
+              </li>
+            ))}
+          </ul>
+
+          <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <Link
               href="#inquiry"
-              className="inline-flex items-center justify-center rounded-full bg-brand-gold px-6 py-3 text-sm font-semibold text-brand-navy shadow-sm transition hover:bg-brand-gold-soft"
+              className="inline-flex items-center justify-center rounded-full bg-brand-gold px-6 py-3 text-sm font-semibold text-brand-navy transition hover:brightness-110"
             >
-              Request Bulk Quote
+              Request Sample
             </Link>
             <Link
-              href="/products"
-              className="inline-flex items-center justify-center rounded-full border border-white/60 px-6 py-3 text-sm font-semibold text-white transition hover:border-brand-gold-soft hover:text-brand-gold-soft"
+              href="#inquiry"
+              className="inline-flex items-center justify-center rounded-full border border-white/55 px-6 py-3 text-sm font-semibold text-white transition hover:border-brand-gold hover:text-brand-gold"
             >
-              View Products
+              Get Quotation
             </Link>
+            <a
+              href={whatsappLink(siteConfig.whatsapp, siteConfig.whatsappMessage)}
+              target="_blank"
+              rel="noreferrer noopener"
+              className="inline-flex items-center justify-center rounded-full bg-[#25D366] px-6 py-3 text-sm font-semibold text-white transition hover:brightness-110"
+            >
+              WhatsApp Now
+            </a>
           </div>
         </div>
-      </div>
 
-      {/* Controls */}
-      <div className="absolute bottom-6 left-0 right-0 z-10">
-        <div className="container flex items-center justify-between">
-          <div className="flex items-center gap-2" role="tablist" aria-label="Select slide">
-            {heroSlides.map((_, i) => (
-              <button
-                key={i}
-                type="button"
-                role="tab"
-                aria-selected={i === index}
-                aria-label={`Go to slide ${i + 1}`}
-                onClick={() => go(i)}
-                className={cn(
-                  'h-1.5 rounded-full transition-all',
-                  i === index ? 'w-10 bg-brand-gold-soft' : 'w-5 bg-white/40 hover:bg-white/70',
-                )}
-              />
-            ))}
-          </div>
-          <div className="flex items-center gap-2">
-            <button
-              type="button"
-              onClick={() => go(index - 1)}
-              aria-label="Previous slide"
-              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/30 bg-brand-navy/30 backdrop-blur hover:border-brand-gold-soft hover:text-brand-gold-soft"
-            >
-              <ChevronLeft className="h-5 w-5" />
-            </button>
-            <button
-              type="button"
-              onClick={() => go(index + 1)}
-              aria-label="Next slide"
-              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/30 bg-brand-navy/30 backdrop-blur hover:border-brand-gold-soft hover:text-brand-gold-soft"
-            >
-              <ChevronRight className="h-5 w-5" />
-            </button>
+        <div className="hidden lg:block">
+          <div className="ml-auto max-w-md rounded-[28px] border border-white/14 bg-white/8 p-7 shadow-2xl backdrop-blur-md">
+            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-brand-gold">
+              Global Buyer Focus
+            </p>
+            <h2 className="mt-3 font-serif text-3xl font-semibold leading-tight text-white">
+              Luxury export positioning with clear B2B conversion paths
+            </h2>
+            <p className="mt-4 text-sm leading-7 text-white/72">
+              Built for importers, distributors and private-label buyers across UAE, Europe, USA
+              and Southeast Asia.
+            </p>
+            <div className="mt-6 grid grid-cols-2 gap-3 text-sm">
+              {['UAE', 'Europe', 'USA', 'Southeast Asia'].map((market) => (
+                <div
+                  key={market}
+                  className="rounded-2xl border border-white/12 bg-brand-navy/40 px-4 py-3 text-center font-medium text-white/90"
+                >
+                  {market}
+                </div>
+              ))}
+            </div>
+            <div className="mt-6 rounded-2xl border border-brand-gold/30 bg-brand-gold/10 px-5 py-4">
+              <p className="text-xs uppercase tracking-[0.24em] text-brand-gold">Conversion Focus</p>
+              <p className="mt-2 text-sm leading-6 text-white/82">
+                Sample requests, buyer enquiries and quotation flows are surfaced from the first
+                screen.
+              </p>
+            </div>
           </div>
         </div>
       </div>

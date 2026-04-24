@@ -1,41 +1,63 @@
-import { MessageSquare, ClipboardCheck, FlaskConical, PackageCheck, Ship } from 'lucide-react';
+import { Globe2, Plane, Ship, Handshake } from 'lucide-react';
 import SectionHeader from './SectionHeader';
 
-const steps = [
-  { icon: MessageSquare, title: 'Enquiry', text: 'Share requirement, destination, MOQ & packaging.' },
-  { icon: ClipboardCheck, title: 'Quote & Spec', text: 'Written quote with HS code, Incoterm & lead time.' },
-  { icon: FlaskConical, title: 'Sample & QC', text: 'Paid sample + NABL lab report for approval.' },
-  { icon: PackageCheck, title: 'Production & Packing', text: 'Lot manufactured, barcoded, retail-ready.' },
-  { icon: Ship, title: 'Shipment & Docs', text: 'FCL/LCL, CoO, phytosanitary, BL handled end-to-end.' },
+const markets = [
+  {
+    title: 'UAE',
+    text: 'Fast-moving demand for premium agri and dehydrated products.',
+    icon: Globe2,
+  },
+  {
+    title: 'Europe',
+    text: 'Quality-led sourcing opportunities for structured private-label supply.',
+    icon: Plane,
+  },
+  {
+    title: 'USA',
+    text: 'Export-ready positioning for buyers needing reliable documentation.',
+    icon: Ship,
+  },
+  {
+    title: 'Southeast Asia',
+    text: 'Relationship-driven supply chains with flexible commercial coordination.',
+    icon: Handshake,
+  },
 ];
 
 export default function ProcessFlow() {
   return (
-    <section aria-label="How we work" className="py-20">
+    <section aria-label="Global presence" className="bg-white py-20 md:py-24">
       <div className="container">
         <SectionHeader
-          eyebrow="How we work"
-          title="A clean, five-step export process"
-          subtitle="Predictable, transparent and documented — from your first enquiry to the shipping bill."
+          eyebrow="Global Presence"
+          title="Connecting India to the World"
+          subtitle="We are actively building supply relationships across UAE, Europe, USA and Southeast Asia — focused on long-term partnerships and reliable supply chains."
         />
-        <ol className="relative grid gap-6 md:grid-cols-5">
-          <div
-            className="pointer-events-none absolute left-0 right-0 top-6 hidden h-px bg-gradient-to-r from-transparent via-brand-gold/50 to-transparent md:block"
-            aria-hidden
-          />
-          {steps.map(({ icon: Icon, title, text }, i) => (
-            <li key={title} className="relative flex flex-col items-center text-center">
-              <span className="relative z-10 inline-flex h-12 w-12 items-center justify-center rounded-full border border-brand-gold/40 bg-white text-brand-green-deep shadow-card">
-                <Icon className="h-5 w-5" aria-hidden />
+
+        <div className="rounded-[32px] border border-brand-navy/10 bg-[#F8F9FB] p-8 md:p-10">
+          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+            {markets.map(({ title, text, icon: Icon }) => (
+              <article key={title} className="rounded-[24px] border border-brand-navy/8 bg-white p-6 shadow-card">
+                <span className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-brand-gold/12 text-brand-gold">
+                  <Icon className="h-5 w-5" aria-hidden />
+                </span>
+                <h3 className="mt-5 font-serif text-2xl font-semibold text-brand-navy">{title}</h3>
+                <p className="mt-3 text-sm leading-7 text-brand-navy/68">{text}</p>
+              </article>
+            ))}
+          </div>
+
+          <div className="mt-8 flex flex-wrap items-center gap-3 border-t border-brand-navy/10 pt-6">
+            {['Long-term buyer partnerships', 'Reliable supply chains', 'Premium presentation', 'International standard communication'].map((item) => (
+              <span
+                key={item}
+                className="rounded-full border border-brand-gold/30 bg-brand-gold/8 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-brand-navy"
+              >
+                {item}
               </span>
-              <span className="mt-3 text-xs font-semibold uppercase tracking-wider text-brand-gold">
-                Step {i + 1}
-              </span>
-              <h3 className="mt-1 font-serif text-lg font-semibold text-brand-navy">{title}</h3>
-              <p className="mt-1 text-sm text-brand-navy/70">{text}</p>
-            </li>
-          ))}
-        </ol>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );

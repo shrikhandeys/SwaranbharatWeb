@@ -1,53 +1,43 @@
-import { Quote } from 'lucide-react';
+import Link from 'next/link';
 import SectionHeader from './SectionHeader';
-
-const testimonials = [
-  {
-    quote:
-      'Clean documentation, consistent specs and on-time FCL delivery to Jebel Ali. Swaranbharat has become a reliable origin partner for our moringa and turmeric programmes.',
-    name: 'Procurement Lead',
-    company: 'Wellness importer, UAE',
-  },
-  {
-    quote:
-      'Their private-label support shaved weeks off our launch timeline. Artwork, barcoding and retail-ready cartons were all handled in-house.',
-    name: 'Founder',
-    company: 'D2C spice brand, United Kingdom',
-  },
-  {
-    quote:
-      'HS-code guidance and phytosanitary paperwork were flawless. Customs cleared our first reefer of fresh ginger without a single query.',
-    name: 'Head of Sourcing',
-    company: 'Wholesale distributor, Singapore',
-  },
-];
+import { siteConfig } from '@/data/site';
+import { whatsappLink } from '@/lib/utils';
 
 export default function Testimonials() {
   return (
-    <section aria-label="Buyer testimonials" className="bg-brand-navy py-20 text-brand-ivory">
+    <section aria-label="Primary call to action" className="bg-brand-navy py-20 text-brand-ivory md:py-24">
       <div className="container">
-        <SectionHeader
-          eyebrow="Buyer Trust"
-          title="What global buyers say"
-          subtitle="Real feedback from repeat buyers across the Gulf, Europe and South-East Asia."
-          className="[&_h2]:text-white [&_p]:text-brand-ivory/80"
-        />
-        <div className="grid gap-6 md:grid-cols-3">
-          {testimonials.map((t) => (
-            <figure
-              key={t.name + t.company}
-              className="relative flex h-full flex-col rounded-2xl border border-brand-ivory/15 bg-white/[0.04] p-6"
+        <div className="rounded-[36px] border border-white/10 bg-white/[0.04] p-8 md:p-12">
+          <SectionHeader
+            eyebrow="Start Your Import Journey"
+            title="Start Your Import Journey with Us"
+            subtitle="Request samples, get quotations, or discuss your requirements directly with our export team."
+            align="left"
+            className="mb-0 max-w-2xl [&_h2]:text-white [&_p]:text-white/75"
+          />
+
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <Link
+              href="#inquiry"
+              className="inline-flex items-center justify-center rounded-full bg-brand-gold px-6 py-3 text-sm font-semibold text-brand-navy transition hover:brightness-110"
             >
-              <Quote className="h-6 w-6 text-brand-gold-soft" aria-hidden />
-              <blockquote className="mt-3 flex-1 text-sm leading-relaxed text-brand-ivory/90">
-                “{t.quote}”
-              </blockquote>
-              <figcaption className="mt-5 border-t border-brand-ivory/15 pt-3 text-xs">
-                <span className="font-semibold text-white">{t.name}</span>
-                <span className="block text-brand-ivory/70">{t.company}</span>
-              </figcaption>
-            </figure>
-          ))}
+              Request Sample
+            </Link>
+            <Link
+              href="#inquiry"
+              className="inline-flex items-center justify-center rounded-full border border-white/40 px-6 py-3 text-sm font-semibold text-white transition hover:border-brand-gold hover:text-brand-gold"
+            >
+              Become a Buyer
+            </Link>
+            <a
+              href={whatsappLink(siteConfig.whatsapp, siteConfig.whatsappMessage)}
+              target="_blank"
+              rel="noreferrer noopener"
+              className="inline-flex items-center justify-center rounded-full bg-[#25D366] px-6 py-3 text-sm font-semibold text-white transition hover:brightness-110"
+            >
+              WhatsApp Now
+            </a>
+          </div>
         </div>
       </div>
     </section>

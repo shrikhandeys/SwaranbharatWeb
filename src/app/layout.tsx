@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { Inter, Cormorant_Garamond } from 'next/font/google';
+import { Inter, Playfair_Display } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
@@ -12,10 +12,10 @@ const inter = Inter({
   variable: '--font-sans',
 });
 
-const cormorant = Cormorant_Garamond({
+const playfair = Playfair_Display({
   subsets: ['latin'],
   display: 'swap',
-  weight: ['500', '600', '700'],
+  weight: ['600', '700', '800'],
   variable: '--font-serif',
 });
 
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  themeColor: '#0F1F3D',
+  themeColor: '#0B1F3A',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -82,9 +82,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   };
 
   return (
-    <html lang="en" className={`${inter.variable} ${cormorant.variable}`}>
+    <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
       <body className="min-h-screen bg-brand-ivory text-brand-navy antialiased">
-        <a href="#main" className="skip-link">Skip to main content</a>
+        <a href="#main" className="skip-link">
+          Skip to main content
+        </a>
         <Header />
         <main id="main">{children}</main>
         <Footer />

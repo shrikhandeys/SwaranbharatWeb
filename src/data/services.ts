@@ -1,12 +1,5 @@
 import type { LucideIcon } from 'lucide-react';
-import {
-  Microscope,
-  LineChart,
-  FileSearch,
-  FileCheck2,
-  Tags,
-  Handshake,
-} from 'lucide-react';
+import { FileSearch, Files, ShieldCheck, LineChart, PackageCheck } from 'lucide-react';
 
 export type Service = {
   slug: string;
@@ -17,45 +10,33 @@ export type Service = {
 
 export const services: Service[] = [
   {
-    slug: 'product-research',
-    name: 'Product Research',
-    blurb:
-      'Data-driven product screening across agri, dehydrated, powdered and paper categories — specs, grades, origins.',
-    icon: Microscope,
-  },
-  {
-    slug: 'market-research',
-    name: 'Market Research',
-    blurb:
-      'Country-wise demand, pricing and compliance intelligence to help you choose the right export corridor.',
-    icon: LineChart,
-  },
-  {
-    slug: 'hs-code-assistance',
-    name: 'HS Code Assistance',
-    blurb:
-      'Accurate HS classification, duty structure and trade-agreement benefits for your shipment.',
+    slug: 'hs-code-identification',
+    name: 'HS Code Identification',
+    blurb: 'Clear classification support for export planning, paperwork and buyer alignment.',
     icon: FileSearch,
   },
   {
-    slug: 'export-documentation',
-    name: 'Export Documentation',
-    blurb:
-      'Invoice, packing list, CoO, phytosanitary, APEDA, FSSAI and BL — end-to-end document support.',
-    icon: FileCheck2,
+    slug: 'product-documentation-support',
+    name: 'Product Documentation Support',
+    blurb: 'Structured documentation guidance for specifications, samples and commercial paperwork.',
+    icon: Files,
   },
   {
-    slug: 'private-label',
-    name: 'Private Label Support',
-    blurb:
-      'Your brand, our supply chain — custom packaging, artwork, barcoding and retail-ready SKUs.',
-    icon: Tags,
+    slug: 'export-compliance-guidance',
+    name: 'Export Compliance Guidance',
+    blurb: 'Practical coordination for process discipline and certification readiness as the business scales.',
+    icon: ShieldCheck,
   },
   {
-    slug: 'sourcing-assistance',
-    name: 'Sourcing Assistance',
-    blurb:
-      'Verified sourcing across Indian origins with sample-approval workflow and QC at every stage.',
-    icon: Handshake,
+    slug: 'market-research-buyer-support',
+    name: 'Market Research & Buyer Support',
+    blurb: 'Buyer-focused guidance around target markets, positioning and commercial conversations.',
+    icon: LineChart,
+  },
+  {
+    slug: 'packaging-logistics-coordination',
+    name: 'Packaging & Logistics Coordination',
+    blurb: 'Support for export presentation, dispatch planning and international movement of goods.',
+    icon: PackageCheck,
   },
 ];

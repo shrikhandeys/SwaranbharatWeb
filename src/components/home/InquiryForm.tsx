@@ -29,7 +29,7 @@ const schema = z
     productInterest: z.string().min(1, 'Select a product interest'),
     message: z.string().min(10, 'Tell us a bit about your requirement (min 10 chars)'),
     seriousBuyer: z.boolean().refine((v) => v, 'Please confirm'),
-    website: z.string().optional(), // honeypot (any value — checked at runtime)
+    website: z.string().optional(),
   })
   .superRefine((val, ctx) => {
     if (val.contactMethod === 'email' && !val.email) {
@@ -66,13 +66,10 @@ export default function InquiryForm() {
   const country = watch('country');
   const contactMethod = watch('contactMethod');
 
-  const stateOptions = useMemo(
-    () => (country === 'IN' ? indianStates : null),
-    [country],
-  );
+  const stateOptions = useMemo(() => (country === 'IN' ? indianStates : null), [country]);
 
   const onSubmit = async (data: FormValues) => {
-    if (data.website) return; // honeypot
+    if (data.website) return;
     try {
       const res = await fetch('/api/contact', {
         method: 'POST',
@@ -88,15 +85,15 @@ export default function InquiryForm() {
 
   if (submitted) {
     return (
-      <section id="inquiry" className="bg-brand-sand py-20">
+      <section id="inquiry" className="bg-[#F8F9FB] py-20 md:py-24">
         <div className="container max-w-2xl text-center">
           <CheckCircle2 className="mx-auto h-12 w-12 text-brand-green" aria-hidden />
           <h2 className="mt-4 font-serif text-3xl font-semibold text-brand-navy">
-            Thank you — enquiry received
+            Thank you — your buyer enquiry has been received
           </h2>
           <p className="mt-3 text-brand-navy/70">
-            Our export team will review your request and respond within 1 business day with a
-            written quote, HS code and lead time.
+            Our team will reply with sample options, quotation guidance and next steps within one
+            business day.
           </p>
         </div>
       </section>
@@ -104,28 +101,20 @@ export default function InquiryForm() {
   }
 
   return (
-    <section id="inquiry" className="bg-brand-sand py-20">
+    <section id="inquiry" className="bg-[#F8F9FB] py-20 md:py-24">
       <div className="container">
         <SectionHeader
-          eyebrow="Request a Quote"
-          title="Start a verified B2B enquiry"
-          subtitle="Tell us about your requirement and we will share a written quote with HS code, Incoterm, lead time and NABL lab specs."
+          eyebrow="Buyer Enquiries"
+          title="Request samples, quotations and buyer support"
+          subtitle="A premium but practical enquiry flow for international buyers who want structured communication and quick follow-up."
         />
 
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="mx-auto grid max-w-4xl gap-5 rounded-3xl border border-brand-navy/10 bg-white p-6 shadow-card md:p-10"
+          className="mx-auto grid max-w-5xl gap-5 rounded-[32px] border border-brand-navy/10 bg-white p-6 shadow-card md:p-10"
           noValidate
         >
-          {/* Honeypot */}
-          <input
-            type="text"
-            tabIndex={-1}
-            autoComplete="off"
-            aria-hidden
-            className="hidden"
-            {...register('website')}
-          />
+          <input type="text" tabIndex={-1} autoComplete="off" aria-hidden className="hidden" {...register('website')} />
 
           <div className="grid gap-5 md:grid-cols-2">
             <Field label="First name" error={errors.firstName?.message}>
@@ -153,16 +142,22 @@ export default function InquiryForm() {
             <Field label="Country" error={errors.country?.message}>
               <select className={inputCls} {...register('country')}>
                 {countries.map((c) => (
-                  <option key={c.code} value={c.code}>{c.name}</option>
+                  <option key={c.code} value={c.code}>
+                    {c.name}
+                  </option>
                 ))}
               </select>
             </Field>
             <Field label="State / Region" error={errors.state?.message}>
               {stateOptions ? (
                 <select className={inputCls} {...register('state')} defaultValue="">
-                  <option value="" disabled>Select state</option>
+                  <option value="" disabled>
+                    Select state
+                  </option>
                   {stateOptions.map((s) => (
-                    <option key={s} value={s}>{s}</option>
+                    <option key={s} value={s}>
+                      {s}
+                    </option>
                   ))}
                 </select>
               ) : (
@@ -181,22 +176,28 @@ export default function InquiryForm() {
             <Field label="User type" error={errors.userType?.message}>
               <select className={inputCls} {...register('userType')}>
                 {userTypes.map((t) => (
-                  <option key={t} value={t}>{t}</option>
+                  <option key={t} value={t}>
+                    {t}
+                  </option>
                 ))}
               </select>
             </Field>
             <Field label="Product interest" error={errors.productInterest?.message}>
               <select className={inputCls} {...register('productInterest')} defaultValue="">
-                <option value="" disabled>Select a category</option>
+                <option value="" disabled>
+                  Select a category
+                </option>
                 {categories.map((c) => (
-                  <option key={c.slug} value={c.slug}>{c.name}</option>
+                  <option key={c.slug} value={c.slug}>
+                    {c.name}
+                  </option>
                 ))}
                 <option value="other">Other / Not listed</option>
               </select>
             </Field>
           </div>
 
-          <fieldset className="rounded-xl border border-brand-navy/10 p-4">
+          <fieldset className="rounded-[24px] border border-brand-navy/10 p-5">
             <legend className="px-1 text-xs font-semibold uppercase tracking-wider text-brand-navy/70">
               Verify contact
             </legend>
@@ -224,7 +225,7 @@ export default function InquiryForm() {
                 <button
                   type="button"
                   onClick={() => setOtpSent(true)}
-                  className="w-full rounded-full border border-brand-navy/20 px-4 py-2 text-sm font-semibold text-brand-navy hover:bg-brand-sand md:w-auto"
+                  className="w-full rounded-full border border-brand-navy/20 px-4 py-2 text-sm font-semibold text-brand-navy hover:bg-[#F8F9FB] md:w-auto"
                 >
                   {otpSent ? 'Resend OTP' : 'Send OTP'}
                 </button>
@@ -245,31 +246,32 @@ export default function InquiryForm() {
 
           <Field label="Tell us about your requirement" error={errors.message?.message}>
             <textarea
-              rows={4}
-              className={inputCls}
-              placeholder="Product, quantity, destination port, target price, packaging, lead time..."
+              className={cn(inputCls, 'min-h-[140px] resize-y')}
+              placeholder="Sample requirement, target market, estimated volume, packing format, preferred quotation terms..."
               {...register('message')}
             />
           </Field>
 
-          <label className="flex items-start gap-3 text-sm text-brand-navy/80">
-            <input type="checkbox" {...register('seriousBuyer')} className="mt-1" />
-            <span>
-              I am a serious B2B buyer / trade partner and agree to be contacted about my enquiry.
-            </span>
+          <label className="inline-flex items-start gap-3 rounded-2xl border border-brand-navy/8 bg-[#F8F9FB] px-4 py-3 text-sm text-brand-navy/84">
+            <input type="checkbox" className="mt-1" {...register('seriousBuyer')} />
+            <span>I am a serious B2B buyer / trade partner and agree to be contacted about my enquiry.</span>
           </label>
-          {errors.seriousBuyer?.message && (
-            <p className="text-xs text-red-600">{errors.seriousBuyer.message}</p>
-          )}
+          {errors.seriousBuyer?.message ? (
+            <p className="-mt-3 text-sm text-red-600">{errors.seriousBuyer.message}</p>
+          ) : null}
 
-          <div className="flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between">
-            <p className="text-xs text-brand-navy/60">
-              By submitting, you agree to our <a href="/privacy" className="underline">Privacy Policy</a>.
+          <div className="flex flex-col gap-4 border-t border-brand-navy/10 pt-6 md:flex-row md:items-center md:justify-between">
+            <p className="text-sm text-brand-navy/65">
+              By submitting, you agree to our{' '}
+              <a href="/privacy" className="font-medium text-brand-navy underline underline-offset-4">
+                Privacy Policy
+              </a>
+              .
             </p>
             <button
               type="submit"
               disabled={isSubmitting}
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-green px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-green-deep disabled:opacity-60"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-gold px-6 py-3 text-sm font-semibold text-brand-navy transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-70"
             >
               <Send className="h-4 w-4" aria-hidden />
               {isSubmitting ? 'Submitting...' : 'Submit enquiry'}
@@ -281,9 +283,6 @@ export default function InquiryForm() {
   );
 }
 
-const inputCls =
-  'w-full rounded-lg border border-brand-navy/15 bg-white px-3.5 py-2.5 text-sm text-brand-navy placeholder:text-brand-navy/40 focus:border-brand-green focus:outline-none focus:ring-2 focus:ring-brand-green/20';
-
 function Field({
   label,
   error,
@@ -294,12 +293,13 @@ function Field({
   children: React.ReactNode;
 }) {
   return (
-    <label className="block">
-      <span className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-brand-navy/70">
-        {label}
-      </span>
+    <label className="grid gap-2 text-sm font-medium text-brand-navy">
+      <span>{label}</span>
       {children}
-      {error && <span className={cn('mt-1 block text-xs text-red-600')}>{error}</span>}
+      {error ? <span className="text-xs text-red-600">{error}</span> : null}
     </label>
   );
 }
+
+const inputCls =
+  'h-12 rounded-2xl border border-brand-navy/12 bg-white px-4 text-sm text-brand-navy outline-none transition placeholder:text-brand-navy/35 focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20';

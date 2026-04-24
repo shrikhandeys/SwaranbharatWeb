@@ -1,31 +1,41 @@
-import {
-  ShieldCheck,
-  FlaskConical,
-  Package,
-  Tag,
-  Truck,
-  BadgeCheck,
-} from 'lucide-react';
+import { ShieldCheck, ScrollText, PackageCheck, Globe2 } from 'lucide-react';
 
 const trustItems = [
-  { icon: ShieldCheck, label: 'Export Ready' },
-  { icon: FlaskConical, label: 'Lab Tested' },
-  { icon: Package, label: 'Bulk Supply' },
-  { icon: Tag, label: 'Private Label' },
-  { icon: Truck, label: 'Global Logistics' },
-  { icon: BadgeCheck, label: 'Verified Sourcing' },
+  {
+    icon: ShieldCheck,
+    label: 'Quality Assured Supply',
+  },
+  {
+    icon: ScrollText,
+    label: 'Certification Process In Progress',
+  },
+  {
+    icon: PackageCheck,
+    label: 'Export-Ready Packaging',
+  },
+  {
+    icon: Globe2,
+    label: 'Global Market Focus',
+    detail: 'UAE | Europe | USA | Asia',
+  },
 ];
 
 export default function TrustStrip() {
   return (
-    <section aria-label="Trust indicators" className="border-b border-brand-navy/10 bg-brand-sand">
-      <div className="container grid grid-cols-2 gap-y-6 py-8 sm:grid-cols-3 lg:grid-cols-6">
-        {trustItems.map(({ icon: Icon, label }) => (
-          <div key={label} className="flex items-center justify-center gap-3 text-center">
-            <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-brand-green/10 text-brand-green-deep">
+    <section aria-label="Trust indicators" className="border-b border-brand-navy/10 bg-white">
+      <div className="container grid gap-4 py-6 md:grid-cols-2 xl:grid-cols-4">
+        {trustItems.map(({ icon: Icon, label, detail }) => (
+          <div
+            key={label}
+            className="flex items-start gap-4 rounded-2xl border border-brand-navy/8 bg-[#F8F9FB] px-5 py-4"
+          >
+            <span className="inline-flex h-11 w-11 flex-none items-center justify-center rounded-full bg-brand-gold/10 text-brand-gold">
               <Icon className="h-5 w-5" aria-hidden />
             </span>
-            <span className="text-sm font-semibold text-brand-navy">{label}</span>
+            <div>
+              <p className="text-sm font-semibold text-brand-navy">{label}</p>
+              {detail ? <p className="mt-1 text-xs text-brand-navy/60">{detail}</p> : null}
+            </div>
           </div>
         ))}
       </div>

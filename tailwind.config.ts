@@ -17,15 +17,15 @@ const config: Config = {
     extend: {
       colors: {
         brand: {
-          navy: '#0F1F3D',
-          'navy-deep': '#0A1833',
+          navy: '#0B1F3A',
+          'navy-deep': '#08172d',
           green: '#1F5F3A',
-          'green-deep': '#103F26',
-          gold: '#C9962B',
-          'gold-soft': '#E5B84A',
-          beige: '#F5EEDC',
-          sand: '#FAF6EC',
-          ivory: '#FCFBF7',
+          'green-deep': '#17472c',
+          gold: '#D4AF37',
+          'gold-soft': '#e0bc53',
+          beige: '#F8F2DF',
+          sand: '#F4F5F7',
+          ivory: '#F8F9FB',
         },
       },
       fontFamily: {
@@ -33,9 +33,8 @@ const config: Config = {
         sans: ['var(--font-sans)', 'system-ui', 'sans-serif'],
       },
       boxShadow: {
-        card: '0 1px 2px rgba(15, 31, 61, 0.06), 0 8px 24px -12px rgba(15, 31, 61, 0.12)',
-        'card-hover':
-          '0 4px 8px rgba(15, 31, 61, 0.08), 0 16px 40px -16px rgba(15, 31, 61, 0.2)',
+        card: '0 10px 30px rgba(11, 31, 58, 0.08), 0 1px 2px rgba(11, 31, 58, 0.06)',
+        'card-hover': '0 18px 48px rgba(11, 31, 58, 0.16), 0 4px 12px rgba(11, 31, 58, 0.08)',
       },
       keyframes: {
         fadeIn: {
