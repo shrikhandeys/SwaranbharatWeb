@@ -10,8 +10,8 @@ export default function Testimonials() {
         <div className="rounded-[36px] border border-white/10 bg-white/[0.04] p-8 md:p-12">
           <SectionHeader
             eyebrow="Start Your Import Journey"
-            title="Start Your Import Journey with Us"
-            subtitle="Request samples, get quotations, or discuss your requirements directly with our export team."
+            title="Start Your Import Journey with a Reliable Indian Export Partner"
+            subtitle="Request samples, receive quotations, and begin structured discussions today."
             align="left"
             className="mb-0 max-w-2xl [&_h2]:text-white [&_p]:text-white/75"
           />
