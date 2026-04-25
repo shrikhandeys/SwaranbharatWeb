@@ -68,37 +68,43 @@ function TrustLine({ tone }: { tone: 'dark' | 'light' }) {
 
 function Slide1() {
   return (
-    <div className="relative overflow-hidden bg-brand-navy text-white">
-      <div className="relative mx-auto w-full max-w-6xl px-4 pt-10 md:pt-12 lg:pt-14">
-        <Image
-          src="/home/brand-banner.png"
-          alt="Swaranbharat ExportSarathi — Global Connections. Local Trust. Your Trusted Global Trade Partner."
-          width={1894}
-          height={830}
-          priority
-          sizes="(min-width:1280px) 1024px, 100vw"
-          className="h-auto w-full"
-        />
-      </div>
-      <div className="container pb-16 pt-8 text-center md:pb-20 md:pt-10 lg:pb-24">
+    <div className="relative isolate overflow-hidden bg-brand-navy text-white">
+      {/* Full-width banner as background */}
+      <Image
+        src="/home/brand-banner.png"
+        alt=""
+        fill
+        priority
+        sizes="100vw"
+        className="-z-10 object-cover object-center"
+      />
+      {/* Navy overlay — rgba(11, 31, 58, 0.7) */}
+      <div
+        aria-hidden
+        className="absolute inset-0 -z-10"
+        style={{ backgroundColor: 'rgba(11, 31, 58, 0.7)' }}
+      />
+
+      {/* Centered content, ~100–140px vertical padding */}
+      <div className="relative mx-auto flex min-h-[520px] w-full max-w-[1200px] items-center justify-center px-6 py-24 text-center md:min-h-[620px] md:py-28 lg:min-h-[680px] lg:py-32">
         <div className="mx-auto max-w-[720px]">
           <p className="text-[11px] font-semibold uppercase tracking-[0.32em] text-brand-gold">
             Global Export Partner From India
           </p>
-          <h1 className="mt-4 font-serif text-3xl font-bold leading-[1.15] md:text-4xl lg:text-[2.75rem]">
+          <h1 className="mt-5 font-serif text-3xl font-bold leading-[1.15] md:text-[2.5rem] lg:text-[3rem]">
             Premium Exporter of Dehydrated Agricultural Products from India
           </h1>
-          <p className="mt-4 font-serif text-lg font-medium text-brand-gold md:text-xl">
+          <p className="mt-5 font-serif text-lg font-medium text-brand-gold md:text-xl">
             Moringa Powder &nbsp;|&nbsp; Dehydrated Onion &nbsp;|&nbsp; Turmeric &amp; Spices
           </p>
-          <p className="mx-auto mt-4 max-w-xl text-sm leading-7 text-white/75 md:text-base">
+          <p className="mx-auto mt-5 max-w-xl text-sm leading-7 text-white/85 md:text-base md:leading-8">
             Built for international buyers seeking reliable sourcing, consistent quality, and
             long-term supply partnerships.
           </p>
-          <div className="mt-7 flex flex-col items-center gap-3 sm:flex-row sm:flex-wrap sm:justify-center">
+          <div className="mt-9 flex flex-col items-center gap-3 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-4">
             <Link
               href="#inquiry"
-              className="inline-flex items-center justify-center rounded-full bg-brand-gold px-6 py-3 text-sm font-semibold text-brand-navy transition hover:brightness-110"
+              className="inline-flex items-center justify-center rounded-full bg-brand-gold px-6 py-3 text-sm font-semibold text-brand-navy shadow-[0_10px_30px_-12px_rgba(212,175,55,0.6)] transition hover:brightness-110"
             >
               Request Sample
             </Link>
@@ -117,7 +123,7 @@ function Slide1() {
               WhatsApp Now
             </a>
           </div>
-          <ul className="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs font-medium text-white/80">
+          <ul className="mt-7 flex flex-wrap items-center justify-center gap-x-7 gap-y-2 text-xs font-medium text-white/85">
             {trustUnderCtas.map((item) => (
               <li key={item} className="flex items-center gap-2">
                 <span className="text-sm text-brand-gold" aria-hidden>
