@@ -47,7 +47,13 @@ export default function ProcessFlow() {
             ))}
           </div>
 
-          <div className="mt-8 flex flex-wrap items-center gap-3 border-t border-brand-navy/10 pt-6">
+          <div className="mt-8 border-t border-brand-navy/10 pt-6 text-center">
+            <p className="mx-auto max-w-2xl font-serif text-lg font-semibold text-brand-navy md:text-xl">
+              We focus on long-term, relationship-driven trade partnerships.
+            </p>
+          </div>
+
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
             {['Long-term buyer partnerships', 'Reliable supply chains', 'Premium presentation', 'International standard communication'].map((item) => (
               <span
                 key={item}

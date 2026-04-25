@@ -1,4 +1,4 @@
-import { ShieldCheck, ScrollText, PackageCheck, Globe2 } from 'lucide-react';
+import { ShieldCheck, Workflow, BadgeCheck, Globe2 } from 'lucide-react';
 
 const trustItems = [
   {
@@ -6,12 +6,12 @@ const trustItems = [
     label: 'Quality Assured Supply',
   },
   {
-    icon: ScrollText,
-    label: 'Certification Process In Progress',
+    icon: Workflow,
+    label: 'Export-Ready Process',
   },
   {
-    icon: PackageCheck,
-    label: 'Export-Ready Packaging',
+    icon: BadgeCheck,
+    label: 'Growing Certification Standards',
   },
   {
     icon: Globe2,
@@ -23,14 +23,14 @@ const trustItems = [
 export default function TrustStrip() {
   return (
     <section aria-label="Trust indicators" className="border-b border-brand-navy/10 bg-white">
-      <div className="container grid gap-4 py-6 md:grid-cols-2 xl:grid-cols-4">
+      <div className="container grid gap-4 py-8 md:grid-cols-2 xl:grid-cols-4 xl:gap-6 xl:py-10">
         {trustItems.map(({ icon: Icon, label, detail }) => (
           <div
             key={label}
-            className="flex items-start gap-4 rounded-2xl border border-brand-navy/8 bg-[#F8F9FB] px-5 py-4"
+            className="flex items-start gap-4 rounded-2xl border border-brand-navy/8 bg-white px-5 py-4"
           >
-            <span className="inline-flex h-11 w-11 flex-none items-center justify-center rounded-full bg-brand-gold/10 text-brand-gold">
-              <Icon className="h-5 w-5" aria-hidden />
+            <span className="inline-flex h-10 w-10 flex-none items-center justify-center rounded-full border border-brand-gold/35 text-brand-gold">
+              <Icon className="h-[18px] w-[18px]" strokeWidth={1.5} aria-hidden />
             </span>
             <div>
               <p className="text-sm font-semibold text-brand-navy">{label}</p>

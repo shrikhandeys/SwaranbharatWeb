@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { Package, Scale } from 'lucide-react';
 import SectionHeader from './SectionHeader';
 
 const homepageProducts = [
@@ -47,6 +48,24 @@ export default function FeaturedProducts() {
               <div className="p-6">
                 <h3 className="font-serif text-2xl font-semibold text-brand-navy">{product.name}</h3>
                 <p className="mt-2 text-sm leading-7 text-brand-navy/68">{product.description}</p>
+
+                <dl className="mt-4 divide-y divide-brand-navy/8 rounded-2xl border border-brand-navy/10 bg-[#F8F9FB] text-xs">
+                  <div className="flex items-center gap-3 px-4 py-2.5">
+                    <Scale className="h-4 w-4 flex-none text-brand-gold" strokeWidth={1.6} aria-hidden />
+                    <dt className="font-semibold uppercase tracking-[0.12em] text-brand-navy/60">
+                      MOQ
+                    </dt>
+                    <dd className="ml-auto font-medium text-brand-navy">Available on Request</dd>
+                  </div>
+                  <div className="flex items-center gap-3 px-4 py-2.5">
+                    <Package className="h-4 w-4 flex-none text-brand-gold" strokeWidth={1.6} aria-hidden />
+                    <dt className="font-semibold uppercase tracking-[0.12em] text-brand-navy/60">
+                      Packaging
+                    </dt>
+                    <dd className="ml-auto font-medium text-brand-navy">Bulk Export Packaging</dd>
+                  </div>
+                </dl>
+
                 <div className="mt-5 flex flex-wrap gap-3">
                   <Link
                     href="#inquiry"

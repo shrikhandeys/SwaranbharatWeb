@@ -109,6 +109,13 @@ export default function InquiryForm() {
           subtitle="A premium but practical enquiry flow for international buyers who want structured communication and quick follow-up."
         />
 
+        <div className="mx-auto mb-6 max-w-5xl rounded-2xl border border-brand-gold/30 bg-brand-gold/8 px-5 py-4 text-sm leading-7 text-brand-navy/80">
+          <p>
+            <span className="font-semibold text-brand-navy">For serious business enquiries only.</span>{' '}
+            We prioritize verified buyers and structured requirements.
+          </p>
+        </div>
+
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="mx-auto grid max-w-5xl gap-5 rounded-[32px] border border-brand-navy/10 bg-white p-6 shadow-card md:p-10"

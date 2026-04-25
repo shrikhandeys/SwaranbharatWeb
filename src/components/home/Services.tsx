@@ -7,8 +7,8 @@ export default function Services() {
       <div className="container">
         <SectionHeader
           eyebrow="Export Capabilities"
-          title="End-to-End Export Support"
-          subtitle="Structured execution for product screening, documentation, compliance and international buyer support."
+          title="End-to-End Export Support for International Buyers"
+          subtitle="From sourcing to shipment, we support every stage of your import journey."
         />
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-5">
           {services.map(({ icon: Icon, ...service }) => (

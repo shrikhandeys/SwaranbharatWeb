@@ -60,20 +60,20 @@ export default function AboutPreview() {
         <div className="relative">
           <div className="relative aspect-[4/3] overflow-hidden rounded-[32px] border border-brand-navy/10 shadow-card">
             <Image
-              src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1400&q=80"
-              alt="Export packaging and warehouse operations"
+              src="/products/turmeric-powder-alt.jpg"
+              alt="Natural turmeric roots and powder — representative of our agri sourcing and processing"
               fill
               sizes="(min-width: 1024px) 50vw, 100vw"
               className="object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-tr from-brand-navy/60 via-brand-navy/10 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-tr from-brand-navy/35 via-transparent to-transparent" />
           </div>
           <div className="absolute bottom-5 left-5 max-w-xs rounded-[24px] border border-white/15 bg-brand-navy/88 p-5 text-white shadow-xl backdrop-blur-sm">
             <p className="text-xs font-semibold uppercase tracking-[0.24em] text-brand-gold">
-              Export-ready standards
+              Sourcing to shipment
             </p>
             <p className="mt-2 text-sm leading-7 text-white/82">
-              Premium presentation, cleaner workflows and dependable execution for international
+              Farm-level sourcing, clean processing and export-grade packaging for international
               B2B buyers.
             </p>
           </div>
