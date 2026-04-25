@@ -66,82 +66,67 @@ function TrustLine({ tone }: { tone: 'dark' | 'light' }) {
   );
 }
 
-function GlobeIllustration() {
-  return (
-    <div className="relative mx-auto aspect-square w-full max-w-[420px] lg:max-w-[480px]">
-      <div
-        className="pointer-events-none absolute inset-0 opacity-60"
-        style={{
-          background:
-            'radial-gradient(closest-side, rgba(212,175,55,0.18) 0%, transparent 72%)',
-        }}
-        aria-hidden
-      />
-      <svg
-        viewBox="0 0 400 400"
-        className="relative h-full w-full text-brand-gold"
-        fill="none"
-        stroke="currentColor"
-        strokeLinecap="round"
-        aria-hidden
-      >
-        <circle cx="200" cy="200" r="186" strokeWidth="1" opacity="0.18" />
-        <circle cx="200" cy="200" r="158" strokeWidth="1" opacity="0.28" />
-        <circle cx="200" cy="200" r="128" strokeWidth="1.2" opacity="0.45" />
-        <g strokeWidth="1.2" opacity="0.85">
-          <circle cx="200" cy="200" r="96" />
-          <ellipse cx="200" cy="200" rx="96" ry="38" />
-          <ellipse cx="200" cy="200" rx="96" ry="68" />
-          <ellipse cx="200" cy="200" rx="42" ry="96" />
-          <ellipse cx="200" cy="200" rx="72" ry="96" />
-          <line x1="104" y1="200" x2="296" y2="200" />
-          <line x1="200" y1="104" x2="200" y2="296" />
-        </g>
-        <g fill="currentColor">
-          <circle cx="312" cy="122" r="3.5" />
-          <circle cx="88" cy="262" r="2.5" opacity="0.7" />
-          <circle cx="276" cy="306" r="2.5" opacity="0.7" />
-        </g>
-        <g strokeWidth="1" opacity="0.55">
-          <path d="M60 150 Q200 70 340 150" />
-          <path d="M60 250 Q200 330 340 250" strokeDasharray="2 6" />
-        </g>
-      </svg>
-    </div>
-  );
-}
-
 function Slide1() {
   return (
     <div className="relative overflow-hidden bg-brand-navy text-white">
-      <div
-        className="pointer-events-none absolute inset-0 opacity-40"
-        style={{
-          background:
-            'radial-gradient(60% 50% at 85% 45%, rgba(212,175,55,0.16) 0%, transparent 70%)',
-        }}
-        aria-hidden
-      />
-      <div className="container grid items-center gap-14 py-16 md:py-20 lg:grid-cols-[minmax(0,600px)_1fr] lg:gap-24 lg:py-28">
-        <div className="max-w-[600px]">
+      <div className="relative mx-auto w-full max-w-6xl px-4 pt-10 md:pt-12 lg:pt-14">
+        <Image
+          src="/home/brand-banner.png"
+          alt="Swaranbharat ExportSarathi — Global Connections. Local Trust. Your Trusted Global Trade Partner."
+          width={1894}
+          height={830}
+          priority
+          sizes="(min-width:1280px) 1024px, 100vw"
+          className="h-auto w-full"
+        />
+      </div>
+      <div className="container pb-16 pt-8 text-center md:pb-20 md:pt-10 lg:pb-24">
+        <div className="mx-auto max-w-[720px]">
           <p className="text-[11px] font-semibold uppercase tracking-[0.32em] text-brand-gold">
             Global Export Partner From India
           </p>
-          <h1 className="mt-5 font-serif text-4xl font-bold leading-[1.1] md:text-5xl lg:text-[3.25rem]">
+          <h1 className="mt-4 font-serif text-3xl font-bold leading-[1.15] md:text-4xl lg:text-[2.75rem]">
             Premium Exporter of Dehydrated Agricultural Products from India
           </h1>
-          <p className="mt-5 font-serif text-xl font-medium leading-snug text-brand-gold md:text-2xl">
+          <p className="mt-4 font-serif text-lg font-medium text-brand-gold md:text-xl">
             Moringa Powder &nbsp;|&nbsp; Dehydrated Onion &nbsp;|&nbsp; Turmeric &amp; Spices
           </p>
-          <p className="mt-5 text-sm leading-7 text-white/75 md:text-base">
+          <p className="mx-auto mt-4 max-w-xl text-sm leading-7 text-white/75 md:text-base">
             Built for international buyers seeking reliable sourcing, consistent quality, and
             long-term supply partnerships.
           </p>
-          <CtaRow tone="dark" />
-          <TrustLine tone="dark" />
-        </div>
-        <div className="relative">
-          <GlobeIllustration />
+          <div className="mt-7 flex flex-col items-center gap-3 sm:flex-row sm:flex-wrap sm:justify-center">
+            <Link
+              href="#inquiry"
+              className="inline-flex items-center justify-center rounded-full bg-brand-gold px-6 py-3 text-sm font-semibold text-brand-navy transition hover:brightness-110"
+            >
+              Request Sample
+            </Link>
+            <Link
+              href="#inquiry"
+              className="inline-flex items-center justify-center rounded-full border border-white/60 px-6 py-3 text-sm font-semibold text-white transition hover:border-brand-gold hover:text-brand-gold"
+            >
+              Get Quotation
+            </Link>
+            <a
+              href={whatsappLink(siteConfig.whatsapp, siteConfig.whatsappMessage)}
+              target="_blank"
+              rel="noreferrer noopener"
+              className="inline-flex items-center justify-center rounded-full bg-[#25D366] px-6 py-3 text-sm font-semibold text-white transition hover:brightness-110"
+            >
+              WhatsApp Now
+            </a>
+          </div>
+          <ul className="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs font-medium text-white/80">
+            {trustUnderCtas.map((item) => (
+              <li key={item} className="flex items-center gap-2">
+                <span className="text-sm text-brand-gold" aria-hidden>
+                  ✓
+                </span>
+                {item}
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </div>
