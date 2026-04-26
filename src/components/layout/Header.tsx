@@ -9,6 +9,27 @@ import { siteConfig } from '@/data/site';
 import { cn } from '@/lib/utils';
 import UtilityBar from './UtilityBar';
 
+const productMegaMenu = [
+  {
+    label: 'Agri Products',
+    href: '/products/agri-products',
+    subcategories: [
+      { label: 'Perishable', href: '/products/perishable-products' },
+      { label: 'Dehydrated', href: '/products/dehydrated-products' },
+      { label: 'Powdered', href: '/products/powdered-products' },
+    ],
+  },
+  {
+    label: 'Paper Products',
+    href: '/products/paper-products',
+    subcategories: [
+      { label: 'Paper Bags', href: '/products/paper-products#paper-bags' },
+      { label: 'Kraft Rolls', href: '/products/paper-products#kraft-rolls' },
+      { label: 'Printed Packaging', href: '/products/paper-products#printed-packaging' },
+    ],
+  },
+];
+
 export default function Header() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -48,13 +69,51 @@ export default function Header() {
           <nav aria-label="Primary" className="hidden lg:block">
             <ul className="flex items-center gap-1">
               {primaryNav.map((item) => (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    className="rounded px-3 py-2 text-sm font-medium text-brand-navy transition hover:bg-[#F8F9FB] hover:text-brand-gold"
-                  >
-                    {item.label}
-                  </Link>
+                <li key={item.href} className={cn(item.label === 'Products' && 'relative group/products')}>
+                  {item.label === 'Products' ? (
+                    <>
+                      <Link
+                        href={item.href}
+                        className="rounded px-3 py-2 text-sm font-medium text-brand-navy transition hover:bg-[#F8F9FB] hover:text-brand-gold"
+                      >
+                        {item.label}
+                      </Link>
+                      <div className="invisible absolute left-0 top-full z-50 mt-2 min-w-[220px] rounded-xl border border-brand-navy/10 bg-white p-2 opacity-0 shadow-lg transition-all duration-150 group-hover/products:visible group-hover/products:opacity-100">
+                        {productMegaMenu.map((category) => (
+                          <div
+                            key={category.label}
+                            className="relative group after:absolute after:left-full after:top-0 after:h-full after:w-2"
+                          >
+                            <Link
+                              href={category.href}
+                              className="flex items-center justify-between rounded-md px-3 py-2 text-sm font-medium text-brand-navy transition hover:bg-[#F8F9FB] hover:text-brand-gold"
+                            >
+                              {category.label}
+                              <ChevronRight className="h-4 w-4" aria-hidden />
+                            </Link>
+                            <div className="absolute left-full top-0 z-50 ml-2 hidden min-w-[220px] rounded-xl border border-brand-navy/10 bg-white p-2 shadow-lg group-hover:block">
+                              {category.subcategories.map((subcategory) => (
+                                <Link
+                                  key={subcategory.label}
+                                  href={subcategory.href}
+                                  className="block rounded-md px-3 py-2 text-sm text-brand-navy transition hover:bg-[#F8F9FB] hover:text-brand-gold"
+                                >
+                                  {subcategory.label}
+                                </Link>
+                              ))}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </>
+                  ) : (
+                    <Link
+                      href={item.href}
+                      className="rounded px-3 py-2 text-sm font-medium text-brand-navy transition hover:bg-[#F8F9FB] hover:text-brand-gold"
+                    >
+                      {item.label}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
